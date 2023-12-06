@@ -4,10 +4,10 @@
 
 package frc.robot.subsystems;
 
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
+import com.ctre.phoenix6.hardware.TalonFX;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import edu.wpi.first.wpilibj2.command.CommandBase;
+import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.DriveConstants;
 
@@ -15,17 +15,18 @@ public class DriveSubsystem extends SubsystemBase {
   /** Creates a new ExampleSubsystem. */
   public DriveSubsystem() {}
   
-  public WPI_TalonFX leftFrontMotor = new WPI_TalonFX(DriveConstants.leftFront);
-  public WPI_TalonFX leftBackMotor = new WPI_TalonFX(DriveConstants.leftBack);
-  public WPI_TalonFX rightFrontMotor = new WPI_TalonFX(DriveConstants.rightFront);
-  public WPI_TalonFX rightBackMotor = new WPI_TalonFX(DriveConstants.rightBack);
+
+  public TalonFX leftFrontMotor = new TalonFX(DriveConstants.leftFront);
+  public TalonFX leftBackMotor = new TalonFX(DriveConstants.leftBack);
+  public TalonFX rightFrontMotor = new TalonFX(DriveConstants.rightFront);
+  public TalonFX rightBackMotor = new TalonFX(DriveConstants.rightBack);
   
   /**
    * Example command factory method.
    *
    * @return a command
    */
-  public CommandBase exampleMethodCommand() {
+  public Command exampleMethodCommand() {
     // Inline construction of command goes here.
     // Subsystem::RunOnce implicitly requires `this` subsystem.
     return runOnce(
@@ -35,7 +36,7 @@ public class DriveSubsystem extends SubsystemBase {
   }
 
   public double getEncoderMeters() {
-    return (leftFrontMotor.getSelectedSensorPosition() - rightFrontMotor.getSelectedSensorPosition()) / 2 * DriveConstants.kEncoderTick2Meter;
+    return (leftFrontMotor.getRotorPosition().getValue() - rightFrontMotor.getRotorPosition().getValue()) / 2 * DriveConstants.kEncoderTick2Meter;
   }
 
   @Override

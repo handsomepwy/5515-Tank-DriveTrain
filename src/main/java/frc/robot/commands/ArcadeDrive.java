@@ -8,10 +8,10 @@ import frc.robot.subsystems.DriveSubsystem;
 
 import java.util.function.Supplier;
 
-import edu.wpi.first.wpilibj2.command.CommandBase;
+import edu.wpi.first.wpilibj2.command.Command;
 
 /** An example command that uses an example subsystem. */
-public class ArcadeDrive extends CommandBase {
+public class ArcadeDrive extends Command {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
   private final DriveSubsystem driveSubsystem;
   private final Supplier<Double> speedFunction;
