@@ -23,6 +23,6 @@ public final class Constants {
     public static final int rightFront = 2;
     public static final int rightBack = 3;
 
-    public static final double kEncoderTick2Meter = 1.0 / 2048.0 * 0.1* 1.28 * Math.PI;
+    public static final double kEncoderTick2Meter = 1.0 * 0.1* 1.28 * Math.PI;
   }
 }
